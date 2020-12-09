@@ -1,7 +1,8 @@
 %lets test our function below 
-fc = 300;
+fc = 2500;
 F_s = 44100;
 L1 = FindL1(fc, F_s)
+L2 = findL2(L1)
 
 % this function can find the desired L1 value
 function L1 = FindL1(fc, F_s)
@@ -26,5 +27,10 @@ function DRRS = DRRS_W(L1,L2,fc,F_s)
 end 
 
 function L2 = findL2(L1)
-    L2 = round(L1/sqrt(2));
+   temp = round(L1/sqrt(2));
+   if mod(temp,2) == 0
+       L2 = temp+1;
+   else 
+       L2=temp;
+   end
 end 
